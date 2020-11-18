@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author"
+	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Jekyll v4.1.1">
+<th:block th:insert="fragments/head::head"></th:block>
+
+<title>Liste des site</title>
+
+<link rel="canonical"
+	href="https://getbootstrap.com/docs/4.5/examples/album/">
+
+
+<style>
+section {
+	background-color: #fffa65
+	
+}
+
+
+
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+</style>
+<!-- Custom styles for this template -->
+<link href="css/album.css" rel="stylesheet">
+</head>
+<body>
+	<div class="mt-0">
+		<th:block th:insert="fragments/navbar::navbar"></th:block>
+	</div>
+
+
+
+	<main role="main">
+		<section class="jumbotron text-center section"
+			style='background-image: url("../images/post-topo.jpg") no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;'>
+			<div class="container">
+				<h1>Sites</h1>
+				<p class="lead text-muted">Découvrez les plus beaux site de nos
+					région, poster par nos adhérent</p>
+				<p></p>
+			</div>
+		</section>
+		
+		<div class="album py-5 bg-light">
+			<div class="container">
+
+				<div class="row">
+
+					<th:block th:each="site : ${listSitesmodel}">
+
+						<a th:href="@{/displaySite/{id}(id=${site.id})}">
+							<div class="col-md-4">
+								<div class="card mb-4 shadow-sm">
+									<img th:if="${site.imageUrl != null}"
+										class="bd-placeholder-img card-img-top radius0"
+										style="border-radius: 0px" width="100%" height="225" alt="hhh"
+										th:src="@{/image/{image}(image=${site.imageUrl})}" />
+
+									<svg th:if="${site.imageUrl == null}"
+										class="bd-placeholder-img card-img-top" width="100%"
+										height="225" xmlns="http://www.w3.org/2000/svg"
+										preserveAspectRatio="xMidYMid slice" focusable="false"
+										role="img" aria-label="Placeholder: Thumbnail">
+										<title>Placeholder</title><rect width="100%" height="100%"
+											fill="#55595c" />
+										<text x="50%" y="50%" fill="#eceeef" dy=".3em"
+											th:text="${site.nomSite}"></text></svg>
+									<div class="card-body">
+										<p th:text="${site.nomSite}"></p>
+										<p th:text="${site.descriptionSite}"></p>
+										<div class="d-flex justify-content-between align-items-center">
+											<div class="btn-group">
+												<a type="button" class="btn btn-sm btn-outline-secondary"
+													th:href="@{/displaySite/{id}(id=${site.id})}">Voir</a>
+												<th:block
+													th:if="${session.userSession != null && session.userSession.admin }">
+													<a th:if="${site.estTaguer == false}" type="button"
+														class="btn btn-sm btn-outline-secondary"
+														th:href="@{/taguer/{id}(id=${site.id})}">Tag</a>
+													<a th:if="${site.estTaguer}" type="button"
+														class="btn btn-sm btn-outline-secondary"
+														th:href="@{/deTaguer/{id}(id=${site.id})}">Detag</a>
+												</th:block>
+												<th:block
+													th:if="${(session.userSession != null && session.userSession.admin==false) || (session.userSession == null) }">
+													<div th:if="${site.estTaguer}">
+														<svg width="2em" height="2em" viewBox="0 0 16 16"
+															class="bi bi-award " fill="currentColor"
+															xmlns="http://www.w3.org/2000/svg">
+															<path fill-rule="evenodd"
+																d="M9.669.864L8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193l-1.51-.229L8 1.126l-1.355.702-1.51.229-.684 1.365-1.086 1.072L3.614 6l-.25 1.506 1.087 1.072.684 1.365 1.51.229L8 10.874l1.356-.702 1.509-.229.684-1.365 1.086-1.072L12.387 6l.248-1.506-1.086-1.072-.684-1.365z" />
+															<path
+																d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+					                                     </svg>
+													</div>
+												</th:block>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</a>
+					</th:block>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+	<footer class="text-muted">
+		<div class="container">
+			<p class="float-right">
+				<a href="#">Back to top</a>
+			</p>
+			<p>&copy; 2019-2020 | Les amis de l'escalade, Inc.
+				&middot;&middot;</p>
+		</div>
+	</footer>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')
+	</script>
+	<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+	<script th:src="@{/popper/popper.min.js}"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</html>
+
