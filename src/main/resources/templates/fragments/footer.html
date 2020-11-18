@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+
+
+</head>
+
+
+<body>
+
+	<th:block th:fragment="footer">
+	
+	<style>
+		/*html{
+			position: relative;
+			height: 100%;
+			overflow: scroll;
+		}
+		
+		footer{
+			margin-top: 20px;
+			position : absolute;
+			bottom : 0px;
+		}*/
+		
+	</style>
+	<div></div>
+
+		<!-- FOOTER -->
+		<br><br><br><br><br>
+		<footer class="container fixed-bottom text-rep1 ">
+			<div class="row">
+				<p class="float-right">
+				
+			</p>
+			<p> 2019-2020 | Les amis de l'escalade, Inc. &middot; </p>
+			</div>
+		</footer>
+		
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"></script>
+		<script>
+			window.jQuery
+					|| document
+							.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')
+		</script>
+		<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+		<script th:src="@{/popper/popper.min.js}"></script>
+		<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+	</th:block>
+</body>
+</html>

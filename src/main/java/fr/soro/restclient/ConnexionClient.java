@@ -38,7 +38,7 @@ import fr.soro.wrapper.UsersWrapper;
 
 
 @RestController
-public class Connexion {
+public class ConnexionClient {
 	@Autowired
 	RestTemplate restTemplate;
 	@Autowired
@@ -89,7 +89,7 @@ public class Connexion {
 		String username = userForm.getUsername();	
 		String token = "Bearer " + authenticationResponse.getBody();
 		securityClient.storeToken(token, username);	
-		modelAndView.setViewName("susses");
+		modelAndView.setViewName("index");
 		return modelAndView;
 		} else 
 		{

@@ -108,6 +108,14 @@ public class OuvrageDto implements Serializable{
 	public void setExemplaires(List<ExemplaireDto> exemplaires) {
 		this.exemplaires = exemplaires;
 	}
+
+	@Override
+	public String toString() {
+		return "OuvrageDto [id=" + id + ", titre=" + titre + ", auteur=" + auteur + ", dateParution=" + dateParution
+				+ ", description=" + description + ", categorie=" + categorie + ", nbreExemplaireDispo="
+				+ nbreExemplaireDispo + ", exemplaires=" + exemplaires + "]";
+	}
+	
 	
 	
 }
