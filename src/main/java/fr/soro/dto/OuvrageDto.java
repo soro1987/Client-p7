@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class OuvrageDto implements Serializable{
 
 	/**
@@ -17,6 +19,7 @@ public class OuvrageDto implements Serializable{
 	
 	private String auteur;
 	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date dateParution;
 	
 	private String description;
@@ -72,7 +75,7 @@ public class OuvrageDto implements Serializable{
 	public Date getDateParution() {
 		return dateParution;
 	}
-
+	@JsonFormat(pattern="yyyy-MM-dd")
 	public void setDateParution(Date dateParution) {
 		this.dateParution = dateParution;
 	}

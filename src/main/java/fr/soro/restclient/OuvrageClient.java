@@ -11,7 +11,7 @@ import fr.soro.service.OuvrageService;
 @RestController
 public class OuvrageClient {
 
-	OuvrageService ouvrageService;
+	private OuvrageService ouvrageService;
 	
 	
 	public OuvrageClient(OuvrageService ouvrageService) {
@@ -30,7 +30,7 @@ public class OuvrageClient {
 	public ModelAndView ouvrage (@PathVariable(value = "id") Long id,ModelAndView modelAndView){		
 		OuvrageDto ouvrage = ouvrageService.getOuvrageById(id);		
 		modelAndView.addObject("ouvrage", ouvrage);
-		modelAndView.setViewName("ouvrageById");
+		modelAndView.setViewName("ouvrage-id");
 		return modelAndView;
 		
 	}
