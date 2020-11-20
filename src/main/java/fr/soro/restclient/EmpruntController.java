@@ -9,16 +9,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fr.soro.dto.EmpruntDto;
 import fr.soro.dto.OuvrageDto;
-import fr.soro.service.EmpruntService;
-import fr.soro.service.OuvrageService;
+import fr.soro.service.EmpruntClient;
+import fr.soro.service.OuvrageClient;
 
 @RestController
-public class EmpruntClient {
+public class EmpruntController {
 	
-	private EmpruntService empruntService;
+	private EmpruntClient empruntService;
 	
 	
-	public EmpruntClient(EmpruntService empruntService) {
+	public EmpruntController(EmpruntClient empruntService) {
 		this.empruntService = empruntService;
 	}
 

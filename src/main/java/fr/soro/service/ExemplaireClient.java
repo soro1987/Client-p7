@@ -3,6 +3,7 @@ package fr.soro.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -12,14 +13,14 @@ import org.springframework.web.client.RestTemplate;
 import fr.soro.dto.EmpruntDto;
 import fr.soro.dto.ExemplaireDto;
 @Service
-public class ExemplaireService {
+public class ExemplaireClient {
 	
 	@Value("${app.serveur.url}")
 	private String appUrl;
-	private ExemplaireService exemplaireService;
+	private ExemplaireClient exemplaireService;
 	private RestTemplate restTemplate;
 	
-	public ExemplaireService(RestTemplate restTemplate) {
+	public ExemplaireClient(RestTemplate restTemplate) {
 		this.restTemplate = restTemplate;
 	}
 	
@@ -39,6 +40,12 @@ public class ExemplaireService {
 		
 	}
 	
+	
+	public Map<Long, Object> getOuvrageCountBybibliotheque(Long ouvrageId){
+	return restTemplate.getForObject(appUrl+"/ouvrages/{id}/exemplairecount", Map.class,ouvrageId);
+	    
+}
+
 	
 //	public List<ExemplaireDto> getExemplairesByBiblio(Long biblioId){		
 //		List<ExemplaireDto> allExemplaires = exemplaireService.getExemplaires();

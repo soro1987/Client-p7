@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import fr.soro.dto.OuvrageDto;
-import fr.soro.service.OuvrageService;
+import fr.soro.service.OuvrageClient;
 
 @RestController
-public class OuvrageClient {
+public class OuvrageController {
 
-	private OuvrageService ouvrageService;
+	private OuvrageClient ouvrageService;
 	
 	
-	public OuvrageClient(OuvrageService ouvrageService) {
+	public OuvrageController(OuvrageClient ouvrageService) {
 		this.ouvrageService = ouvrageService;
 	}
 

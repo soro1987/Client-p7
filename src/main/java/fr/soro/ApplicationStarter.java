@@ -8,10 +8,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @EnableCaching
 @SpringBootApplication
-public class BiblioClientApplication {
+public class ApplicationStarter {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BiblioClientApplication.class, args);
+		SpringApplication.run(ApplicationStarter.class, args);
 	}
 
 }

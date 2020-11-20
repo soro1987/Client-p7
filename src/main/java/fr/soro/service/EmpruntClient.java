@@ -10,14 +10,14 @@ import org.springframework.web.client.RestTemplate;
 import fr.soro.dto.EmpruntDto;
 import fr.soro.dto.OuvrageDto;
 @Service
-public class EmpruntService {
+public class EmpruntClient {
 	
 	@Value("${app.serveur.url}")
 	private String appUrl;
 
 	private RestTemplate restTemplate;
 	
-	public EmpruntService(RestTemplate restTemplate) {
+	public EmpruntClient(RestTemplate restTemplate) {
 		this.restTemplate = restTemplate;
 	}
 	

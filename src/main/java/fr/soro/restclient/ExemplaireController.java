@@ -1,6 +1,7 @@
 package fr.soro.restclient;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,14 +11,14 @@ import org.springframework.web.servlet.ModelAndView;
 import fr.soro.dto.BiblioDto;
 import fr.soro.dto.ExemplaireDto;
 import fr.soro.dto.OuvrageDto;
-import fr.soro.service.ExemplaireService;
+import fr.soro.service.ExemplaireClient;
 
 @RestController
-public class ExemplaireClient {
+public class ExemplaireController {
 	Long id=(long) 1;
-	private ExemplaireService exemplaireService;
+	private ExemplaireClient exemplaireService;
 	
-	public ExemplaireClient(ExemplaireService exemplaireService) {
+	public ExemplaireController(ExemplaireClient exemplaireService) {
 		this.exemplaireService=exemplaireService;
 	}
 
@@ -42,5 +43,13 @@ public class ExemplaireClient {
 		return modelAndView;
 		
 	}
+	
+//	@GetMapping("/ouvrages/{id}/exemplairecount")
+//		public Map<Long, Object> getOuvrageCountBybibliotheque(Long ouvrageId){
+//		
+//	}
+//	
+	
+	
 
 }

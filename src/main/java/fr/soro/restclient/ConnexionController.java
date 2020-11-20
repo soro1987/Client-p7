@@ -25,14 +25,14 @@ import fr.soro.dto.UserDto;
 
 
 @RestController
-public class ConnexionClient {
+public class ConnexionController {
 		
 	@Value("${app.serveur.url}")
 	private String appUrl;
 	private RestTemplate restTemplate;	
 	private SecurityClient securityClient;
 		
-	public ConnexionClient(SecurityClient securityClient,RestTemplate restTemplate) {
+	public ConnexionController(SecurityClient securityClient,RestTemplate restTemplate) {
 		this.securityClient=securityClient;
 		this.restTemplate=restTemplate;
 	}

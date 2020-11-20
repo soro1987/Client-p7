@@ -9,14 +9,14 @@ import org.springframework.web.client.RestTemplate;
 
 import fr.soro.dto.OuvrageDto;
 @Service
-public class OuvrageService {
+public class OuvrageClient {
 	
 	@Value("${app.serveur.url}")
 	private String appUrl;
 
 	private RestTemplate restTemplate;
 	
-	public OuvrageService(RestTemplate restTemplate) {
+	public OuvrageClient(RestTemplate restTemplate) {
 		this.restTemplate = restTemplate;
 	}
 
