@@ -1,4 +1,4 @@
-package fr.soro.service;
+package fr.soro.Client;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +21,14 @@ public class OuvrageClient {
 	}
 
 	
+	public List<OuvrageDto> getOuvrageBytitredAuteur(String titre,String auteur){		
+		ResponseEntity<OuvrageDto[]> response =restTemplate.getForEntity(appUrl+"/search/"+titre+"/"+auteur, OuvrageDto[].class);
+		OuvrageDto[] ouvrage = response.getBody();
+		List<OuvrageDto> ouvrageDto = Arrays.asList(ouvrage);
+		return ouvrageDto;
+		
+	}
+	
 	public List<OuvrageDto> getOuvrage(){		
 		ResponseEntity<OuvrageDto[]> response =restTemplate.getForEntity(appUrl+"/ouvrages", OuvrageDto[].class);
 		OuvrageDto[] ouvrage = response.getBody();
@@ -33,6 +41,13 @@ public class OuvrageClient {
 		ResponseEntity<OuvrageDto> response =restTemplate.getForEntity(appUrl+"/ouvrages-id/"+ouvrageId, OuvrageDto.class);
 		OuvrageDto ouvrage = response.getBody();	
 		return ouvrage;
+		
+	}
+	
+	public OuvrageDto getOuvrageByTitre(String ouvrageTitre){		
+		ResponseEntity<OuvrageDto> response =restTemplate.getForEntity(appUrl+"/ouvrages-titre/"+ouvrageTitre, OuvrageDto.class);
+		OuvrageDto ouvrageByTitre = response.getBody();	
+		return ouvrageByTitre;
 		
 	}
 }

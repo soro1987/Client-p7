@@ -1,4 +1,4 @@
-package fr.soro.service;
+package fr.soro.Client;
 import java.util.Arrays;
 import java.util.List;
 

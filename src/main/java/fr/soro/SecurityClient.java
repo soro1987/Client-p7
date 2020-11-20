@@ -19,7 +19,7 @@ import fr.soro.utils.UserContext;
 
 
 
-@Controller
+
 @Component
 public class SecurityClient {
 	

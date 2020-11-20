@@ -1,4 +1,4 @@
-package fr.soro.service;
+package fr.soro.Client;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,7 +42,7 @@ public class ExemplaireClient {
 	
 	
 	public Map<Long, Object> getOuvrageCountBybibliotheque(Long ouvrageId){
-	return restTemplate.getForObject(appUrl+"/ouvrages/{id}/exemplairecount", Map.class,ouvrageId);
+	return restTemplate.getForObject(appUrl+"/ouvrages/"+ouvrageId+"/exemplairecount", Map.class);
 	    
 }
 
