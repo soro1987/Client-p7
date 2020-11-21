@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Mes emprunts</title>
+  <title>Disponibilité</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,7 +26,7 @@
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Mes emprunts
+    <h1 class="mt-4 mb-3">Disponibilité dans notre réseau de bibliotheque
       <small></small>
     </h1>
 
@@ -38,29 +38,29 @@
       <a th:href="@{/contact}">Contact</a>
       </li>
     </ol>
-<th:block th:each="emprunt : ${emprunts}">
-    <!-- Content Row -->
-    <div class="row">
-      <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h3 class="card-header" >Numéro d'identification : <span th:text="${emprunt.id}"></span></h3>
-          <div class="card-body">
-            <div class="display-4" >Date limite : <span th:text="${emprunt.dateEcheance}"></span></div>
-            <div class="font-italic">per month</div>
-          </div>
-          <th:block th:each="exemplaire : ${emprunt.exemplaires}">
-          
-          <ul class="list-group list-group-flush">
-            <li th:each="ouvrage : ${exemplaire.ouvrage}" class="list-group-item">Ouvrage :  <span th:text="${ouvrage.titre}"></span></li>
-          </ul>
-          <a href="#" class="btn btn-primary">Prolonger!</a>
-          
-          </th:block>
-        </div>
-      </div>
-      </th:block>
-    </div>
+<th:block th:each="ouvrageCount : ${ouvrageCountBybiblio}">
+	  <div th:each="mapEntry : ${ouvrageCount}">
+	    <!-- Content Row -->
+	    <div class="row">
+	      <div class="col-lg-4 mb-4">
+	        <div class="card h-100">
+	          <h3 class="card-header" ><span th:text="${mapEntry.key}"></span></h3>
+	          <div class="card-body">
+	            <h3 class="card-header" >Quantiter : <span th:text="${mapEntry.value}"></span></h3>
+	            <div class="font-italic">per month</div>
+	          </div>
+	        </div>
+	      </div>
+	  </div>
+	 </div>
+</th:block>
+    
     <!-- /.row -->
+<!-- <div th:each="map : ${mapsList}"> -->
+<!--      <div th:each="mapEntry : ${map}"> -->
+<!--          <span th:text="${mapEntry.key}"></span> =  -->
+<!--          <span th:text="${mapEntry.value}"></span>  -->
+<!--      </div> -->
 
   </div>
   <!-- /.container -->

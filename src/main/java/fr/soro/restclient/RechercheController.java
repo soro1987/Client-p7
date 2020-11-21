@@ -35,27 +35,25 @@ public class RechercheController {
 	
 	
 	@GetMapping("/recherche")
-	public ModelAndView findOuvrage(ModelAndView modelAndView){	
-		
+	public ModelAndView findOuvrage(ModelAndView modelAndView){			
 		modelAndView.setViewName("recherche");
 		return modelAndView;
 	
 	}
 	
 	@RequestMapping(value="/search", method = {RequestMethod.GET})
-	public ModelAndView search(@RequestParam(value = "titre", defaultValue = "defaultTitre")String titre,@RequestParam(value = "auteur", defaultValue = "defaultAuteur") String auteur,ModelAndView modelAndView){				
-		List<OuvrageDto> ouvragesRechercher = ouvrageClient.getOuvrageBytitredAuteur(titre, auteur);
+	public ModelAndView search(@RequestParam(value = "motcle", defaultValue = "defaultmotcle")String motcle,ModelAndView modelAndView){				
+		List<OuvrageDto> ouvragesRechercher = ouvrageClient.getOuvrageBytitredAuteur(motcle);
 		modelAndView.addObject("ouvragesRechercher", ouvragesRechercher);
 		modelAndView.setViewName("resultat-recherche");
 		return modelAndView;
 	}
 	
-	@GetMapping("/recherche-titre")
-	public ModelAndView getOuvrageCountBybibliotheque(@RequestParam(value = "titreOuvrage", defaultValue = "n") String titreOuvrage,ModelAndView modelAndView){	
-		OuvrageDto ouvrageTrouver = ouvrageClient.getOuvrageByTitre(titreOuvrage);
-		Map<Long, Object> ouvrageCountBybiblio = exemplaireClient.getOuvrageCountBybibliotheque(ouvrageTrouver.getId());
+	@GetMapping("/dispo/{ouvrageId}")
+	public ModelAndView getOuvrageCountBybibliotheque(@PathVariable(value = "ouvrageId") Long ouvrageId,ModelAndView modelAndView){			
+		Map<String, Object> ouvrageCountBybiblio = ouvrageClient.getOuvrageCountBybibliotheque(ouvrageId);
 		modelAndView.addObject("ouvrageCountBybiblio", ouvrageCountBybiblio);
-		modelAndView.setViewName("resultat-recherche");
+		modelAndView.setViewName("disponibilite-ouvrage");
 		return modelAndView;
 	
 	}

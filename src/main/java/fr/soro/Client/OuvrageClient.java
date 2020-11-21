@@ -2,6 +2,8 @@ package fr.soro.Client;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -21,8 +23,8 @@ public class OuvrageClient {
 	}
 
 	
-	public List<OuvrageDto> getOuvrageBytitredAuteur(String titre,String auteur){		
-		ResponseEntity<OuvrageDto[]> response =restTemplate.getForEntity(appUrl+"/search/"+titre+"/"+auteur, OuvrageDto[].class);
+	public List<OuvrageDto> getOuvrageBytitredAuteur(String motcle){		
+		ResponseEntity<OuvrageDto[]> response =restTemplate.getForEntity(appUrl+"/search/"+motcle, OuvrageDto[].class);
 		OuvrageDto[] ouvrage = response.getBody();
 		List<OuvrageDto> ouvrageDto = Arrays.asList(ouvrage);
 		return ouvrageDto;
@@ -50,4 +52,10 @@ public class OuvrageClient {
 		return ouvrageByTitre;
 		
 	}
+	
+
+	public Map<String, Object> getOuvrageCountBybibliotheque(Long ouvrageId){
+	return restTemplate.getForObject(appUrl+"/ouvrages/"+ouvrageId+"/exemplairecount", Map.class);
+	    
+}
 }
