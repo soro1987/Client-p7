@@ -8,12 +8,14 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import fr.soro.dto.ExemplaireDto;
 import fr.soro.dto.UserDto;
 import fr.soro.utils.UserContext;
 
@@ -23,6 +25,8 @@ import fr.soro.utils.UserContext;
 @Component
 public class SecurityClient {
 	
+	@Value("${app.serveur.url}")
+	private String appUrl;
 	private CacheManager cacheManager;	
 	private UserContext userContext;		
 	private RestTemplate restTemplate;
@@ -50,5 +54,15 @@ public class SecurityClient {
 		return token.get(username,String.class);
 		
 	}
+	
+//	public boolean isUserExisting(String username){		
+//		ResponseEntity<UserDto> response =restTemplate.getForEntity(appUrl+"/user/"+username, UserDto.class);
+//		UserDto user = response.getBody();	
+//		if (user==null) {
+//			return  false;
+//		}
+//		return true;
+//		
+//	}
 
 }

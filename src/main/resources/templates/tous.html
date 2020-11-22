@@ -23,7 +23,7 @@
   <th:block th:insert="fragments/navbar::navbar"></th:block>
   <!-- Page Content -->
   <div class="container">
-
+   
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">Portfolio 4
       <small>Subheading</small>
@@ -35,22 +35,20 @@
       </li>
       <li class="breadcrumb-item active">Portfolio 4</li>
     </ol>
+    <div class="row">
     <th:block th:each="ouvrage : ${ouvrages}">
-    <a th:href="@{/ouvrages/{id}(id=${ouvrage.id})}">
-     <div class="row">
-      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+<!--     <a th:href="@{/ouvrages/{id}(id=${ouvrage.id})}"> </a> -->
+      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">     
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <a th:href="@{/ouvrages/{id}(id=${ouvrage.id})}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">
-           <a th:href="@{/ouvrages/{id}(id=${ouvrage.id})}"> <h4 class="card-title" th:text="${ouvrage.titre}"></a>
-              <a href="#">Project One</a>
-            </h4>
+           <a th:href="@{/ouvrages/{id}(id=${ouvrage.id})}"> <h4 class="card-title" th:text="${ouvrage.titre}"></h4></a>           
             <p class="card-text" th:text="${ouvrage.description}"></p>
-          </div>
+          </div>          
         </div>
-      </div>
+      </div>     
     </div>
-    </a>
+   
     </th:block>
     <!-- Pagination -->
     <ul class="pagination justify-content-center">

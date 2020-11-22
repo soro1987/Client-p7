@@ -17,9 +17,11 @@ public class OuvrageClient {
 	private String appUrl;
 
 	private RestTemplate restTemplate;
+	private RestTemplate securedRestTemplate;
 	
-	public OuvrageClient(RestTemplate restTemplate) {
+	public OuvrageClient(RestTemplate restTemplate,RestTemplate securedRestTemplate) {
 		this.restTemplate = restTemplate;
+		this.securedRestTemplate = securedRestTemplate;
 	}
 
 	
@@ -32,7 +34,7 @@ public class OuvrageClient {
 	}
 	
 	public List<OuvrageDto> getOuvrage(){		
-		ResponseEntity<OuvrageDto[]> response =restTemplate.getForEntity(appUrl+"/ouvrages", OuvrageDto[].class);
+		ResponseEntity<OuvrageDto[]> response =securedRestTemplate.getForEntity(appUrl+"/ouvrages", OuvrageDto[].class);
 		OuvrageDto[] ouvrage = response.getBody();
 		List<OuvrageDto> ouvrageDto = Arrays.asList(ouvrage);
 		return ouvrageDto;
@@ -40,14 +42,14 @@ public class OuvrageClient {
 	}
 	
 	public OuvrageDto getOuvrageById(Long ouvrageId){		
-		ResponseEntity<OuvrageDto> response =restTemplate.getForEntity(appUrl+"/ouvrages-id/"+ouvrageId, OuvrageDto.class);
+		ResponseEntity<OuvrageDto> response =securedRestTemplate.getForEntity(appUrl+"/ouvrages-id/"+ouvrageId, OuvrageDto.class);
 		OuvrageDto ouvrage = response.getBody();	
 		return ouvrage;
 		
 	}
 	
 	public OuvrageDto getOuvrageByTitre(String ouvrageTitre){		
-		ResponseEntity<OuvrageDto> response =restTemplate.getForEntity(appUrl+"/ouvrages-titre/"+ouvrageTitre, OuvrageDto.class);
+		ResponseEntity<OuvrageDto> response =securedRestTemplate.getForEntity(appUrl+"/ouvrages-titre/"+ouvrageTitre, OuvrageDto.class);
 		OuvrageDto ouvrageByTitre = response.getBody();	
 		return ouvrageByTitre;
 		

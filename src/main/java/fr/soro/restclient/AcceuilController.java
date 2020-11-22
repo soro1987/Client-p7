@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class AcceuilController {
 
 	
-	@GetMapping("/accueil")
+	@GetMapping(value ="/accueil")
 	public ModelAndView getAccueil(ModelAndView modelAndView) {
 		modelAndView.setViewName("accueil");
 		return modelAndView;
