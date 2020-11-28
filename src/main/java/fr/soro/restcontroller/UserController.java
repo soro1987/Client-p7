@@ -1,4 +1,4 @@
-package fr.soro.restclient;
+package fr.soro.restcontroller;
 
 public class UserController {
 

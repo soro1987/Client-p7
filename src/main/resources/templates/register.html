@@ -18,7 +18,7 @@
     <div class="main">
 
         <div class="container">
-            <form class="appointment-form" id="appointment-form" th:action="@{/register}" th:object="${userForm}" method="POST">
+            <form class="appointment-form" id="appointment-form" th:action="@{/register}" th:object="${userRegister}" method="POST">
                 <h2>Formulaire d'inscription</h2>
                 <div class="form-group-1">
                     <input th:field="*{username}" type="text" name="title" id="title" placeholder="Nom d'utilisateur" required />

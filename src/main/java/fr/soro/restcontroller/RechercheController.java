@@ -1,4 +1,4 @@
-package fr.soro.restclient;
+package fr.soro.restcontroller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class RechercheController {
 	
 	@GetMapping("/recherche")
 	public ModelAndView findOuvrage(ModelAndView modelAndView){			
-		modelAndView.setViewName("recherche");
+		modelAndView.setViewName("recherche-initiale");
 		return modelAndView;
 	
 	}

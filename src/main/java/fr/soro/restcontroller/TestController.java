@@ -1,3 +1,4 @@
+package fr.soro.restcontroller;
 //package fr.soro.restclient;
 //
 //import org.springframework.beans.factory.annotation.Autowired;

@@ -15,7 +15,22 @@
 
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
+  <style>
+  body {
+  background-color: #6a89cc
+  }
+  .border-text {
+  font-weight: bold;
+  font-size: 1.5em;
+  <!--text-shadow: 0 0 4px #353b48, 0 0 4px #353b48, 0 0 4px #353b48, 0 0 4px
+      #353b48, 0 0 4px #353b48, 0 0 4px #353b48, 0 0 4px #353b48, 0 0 4px
+      #353b48, 0 0 4px #353b48, 0 0 4px #353b48, 0 0 4px #353b48, 0 0 4px
+      #353b48, 0 0 4px #353b48, 0 0 4px #353b48, 0 0 4px #353b48, 0 0 4px
+      #353b48, 0 0 4px #353b48, 0 0 4px #353b48, 0 0 4px #353b48, 0 0 4px
+      #353b48;-->
+  }
 
+  </style>
 </head>
 
 <body>
@@ -25,26 +40,26 @@
   <div class="container">
    
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Portfolio 4
-      <small>Subheading</small>
+    <h1 class="mt-4 mb-3">Tous nos ouvrages
+
     </h1>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
+        <a th:href="@{/accueil}">Accueil</a>
       </li>
-      <li class="breadcrumb-item active">Portfolio 4</li>
+      <li class="breadcrumb-item active"><a th:href="@{/recherche}">Rechercher</a></li>
     </ol>
     <div class="row">
     <th:block th:each="ouvrage : ${ouvrages}">
 <!--     <a th:href="@{/ouvrages/{id}(id=${ouvrage.id})}"> </a> -->
       <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">     
         <div class="card h-100">
-          <a th:href="@{/ouvrages/{id}(id=${ouvrage.id})}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <a th:href="@{/ouvrages/{id}(id=${ouvrage.id})}"><img class="card-img-top" th:src="${ouvrage.imageUrl}" alt=""></a>  <!--th:src="@{'ouvrage/image/' + @{product.image}}"-->
           <div class="card-body">
-           <a th:href="@{/ouvrages/{id}(id=${ouvrage.id})}"> <h4 class="card-title" th:text="${ouvrage.titre}"></h4></a>           
-            <p class="card-text" th:text="${ouvrage.description}"></p>
-          </div>          
+           <a th:href="@{/ouvrages/{id}(id=${ouvrage.id})}"> <h4 class="card-title" th:text="${ouvrage.titre}"></h4></a>
+            <p class="card-text" th:text="${ouvrage.auteur}"></p>
+          </div>
         </div>
       </div>     
     </div>

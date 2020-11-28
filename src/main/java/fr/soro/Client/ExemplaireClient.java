@@ -42,7 +42,7 @@ public class ExemplaireClient {
 	
 	
 	public Map<Long, Object> getOuvrageCountBybibliotheque(Long ouvrageId){
-	return restTemplate.getForObject(appUrl+"/ouvrages/"+ouvrageId+"/exemplairecount", Map.class);
+	return restTemplate.getForObject(appUrl+"/ouvrages/exemplairecount"+ouvrageId, Map.class);
 	    
 }
 

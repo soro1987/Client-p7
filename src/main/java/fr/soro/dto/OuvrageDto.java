@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OuvrageDto implements Serializable{
 
 	/**
@@ -25,6 +27,10 @@ public class OuvrageDto implements Serializable{
 	private String description;
 	
 	private String categorie;
+
+	private String imageUrl;
+
+	private byte[] image;
 	
 	private  int nbreExemplaireDispo=0;
 	
@@ -35,17 +41,25 @@ public class OuvrageDto implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public OuvrageDto(Long id, String titre, String auteur, Date dateParution, String description, String categorie,
-			int nbreExemplaireDispo, List<ExemplaireDto> exemplaires) {
-		super();
+	public OuvrageDto(Long id, String titre, String auteur, Date dateParution, String description, String categorie, String imageUrl, byte[] image, int nbreExemplaireDispo, List<ExemplaireDto> exemplaires) {
 		this.id = id;
 		this.titre = titre;
 		this.auteur = auteur;
 		this.dateParution = dateParution;
 		this.description = description;
 		this.categorie = categorie;
+		this.imageUrl = imageUrl;
+		this.image = image;
 		this.nbreExemplaireDispo = nbreExemplaireDispo;
 		this.exemplaires = exemplaires;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	public Long getId() {
@@ -110,6 +124,14 @@ public class OuvrageDto implements Serializable{
 
 	public void setExemplaires(List<ExemplaireDto> exemplaires) {
 		this.exemplaires = exemplaires;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 	@Override

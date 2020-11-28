@@ -32,16 +32,16 @@
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
+        <a th:href="@{/accueil}">Accueil</a>
       </li>
-      <li class="breadcrumb-item active">Portfolio Item</li>
+      <li class="breadcrumb-item active"><a th:href="@{/recherche}">Rechercher</a></li>
     </ol>
 
     <!-- Portfolio Item Row -->
     <div class="row">
 
-      <div class="col-md-8">
-        <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+      <div class="col-md-4">
+        <img class="img-fluid" th:src="${ouvrage.imageUrl}" alt="">
       </div>
 
       <div class="col-md-4">

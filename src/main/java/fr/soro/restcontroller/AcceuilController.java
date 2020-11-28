@@ -1,4 +1,4 @@
-package fr.soro.restclient;
+package fr.soro.restcontroller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

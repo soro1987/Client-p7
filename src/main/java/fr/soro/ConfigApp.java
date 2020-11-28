@@ -4,8 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 //import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
+@Service
 @Configuration
 public class ConfigApp {
 	
@@ -20,7 +21,8 @@ public class ConfigApp {
 		restTemplate.getInterceptors().add(customInterceptor);
 		return restTemplate;
 	}
-	
-	
+
+	public ConfigApp() {
+	}
 
 }

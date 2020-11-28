@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
@@ -20,6 +21,7 @@ import fr.soro.utils.UserContext;
 
 @Component
 public class CustomInterceptor implements ClientHttpRequestInterceptor {
+	@Autowired
 	private HttpSession session;
 	private UserContext userContext;	
 	private SecurityClient securityClient;
@@ -40,4 +42,12 @@ public class CustomInterceptor implements ClientHttpRequestInterceptor {
 		return execution.execute(request, body);
 	}
 
+	public CustomInterceptor() {
+	}
+
+	public CustomInterceptor(HttpSession session, UserContext userContext, SecurityClient securityClient) {
+		this.session = session;
+		this.userContext = userContext;
+		this.securityClient = securityClient;
+	}
 }

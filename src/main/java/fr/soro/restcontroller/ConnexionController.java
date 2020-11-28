@@ -1,4 +1,4 @@
-package fr.soro.restclient;
+package fr.soro.restcontroller;
 
 
 import java.util.Arrays;

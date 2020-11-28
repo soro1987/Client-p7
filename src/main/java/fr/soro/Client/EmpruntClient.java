@@ -3,12 +3,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.client.RestTemplate;
-
 import fr.soro.dto.EmpruntDto;
-import fr.soro.dto.OuvrageDto;
 @Service
 public class EmpruntClient {
 	
@@ -20,6 +21,21 @@ public class EmpruntClient {
 	public EmpruntClient(RestTemplate restTemplate) {
 		this.restTemplate = restTemplate;
 	}
+	
+//	private static void updateEmployee()
+//	{
+//	   
+//	     
+//	  
+//	     
+//	    restTemplate.put ( uri, updatedEmployee, params );
+//	}
+
+	public void getProlongation(Long empruntId){		
+		restTemplate.put(appUrl+"/emprunts/prolongation/"+empruntId, EmpruntDto.class);
+		
+	}
+
 	
 	
 	public List<EmpruntDto> getUserEmprunts(Long userId){		
