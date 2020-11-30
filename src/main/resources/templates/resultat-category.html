@@ -8,13 +8,13 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Ouvrages</title>
+  <title>Recherche par categorie</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
+  <link href="../css/modern-business.css" rel="stylesheet">
   <style>
   body {
   background: radial-gradient(circle at bottom, #fffa65 0%, #ffcccc 100%);
@@ -28,13 +28,12 @@
 
   }
   </style>
-  </style>
 </head>
 
 <body>
   		<th:block th:insert="fragments/navbar::navbar"></th:block>
   <!-- Page Content -->
-  <div class="container">
+ <div class="container">
     <!-- Page Heading/Breadcrumbs -->
      <br><br>
     <ol class="breadcrumb radial-gradient">
@@ -42,7 +41,7 @@
         <h4 class="align-center">Effectuer votre recherche</h4>
       </li>
     </ol>
-<br>
+   <br>
     <div class="row">
 
       <!-- Blog Entries Column -->
@@ -50,25 +49,24 @@
 
         <!-- Blog Post -->
 
-      <th:block th:each="ouvrage : ${ouvragesRechercher}">
-        <div th:if="${ouvragesRechercher.isEmpty()}">
+      <th:block th:each="ouvrage : ${ouvragesByCategorie}">
+        <div th:if="${ouvragesByCategorie.isEmpty()}">
           <div>Aucun résultat ne correspond à votre recherche</div>
         </div>
-        <div class="card mb-3 radial-gradient" >
+        <div class="card mb-3 radial-gradient"  >
           <div class="row no-gutters">
             <div class="col-md-4">
               <img th:src="${ouvrage.imageUrl}" class="card-img" alt="...">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <span class="card-title h5 " th:text="${ouvrage.titre}"></span>&nbsp&nbsp&nbsp<span><br>
-                <small class="text-muted"  th:text="${ouvrage.auteur}">Last updated 3 mins ago</small><br>
-                </span>
+                <span class="card-title h5" th:text="${ouvrage.titre}"></span>&nbsp&nbsp&nbsp<span><br>
+                <small class="text-muted"  th:text="${ouvrage.auteur}">Last updated 3 mins ago</small></span><br>
                 <p class="card-text" th:text="${ouvrage.description}"></p>
                 <span class="text-muted">Parution : </span><br>
-                <span class="card-text"><small class="text-muted" th:text="${ouvrage.dateParution}"></small></span><br>
+                <span class="card-text"><small class="text-muted" th:text="${ouvrage.dateParution}"></small></span><br><br>
                 <form class="form-inline form-group  mx-auto mt-1" th:action="@{/dispo/{ouvrageId}(ouvrageId=${ouvrage.id})}" method="get" >
-                  <button class="btn btn-outline-info" type="submit">Voir disponibilité</button>
+                  <br> <button class="btn btn-outline-dark" type="submit">Voir disponibilité</button>
                 </form>
               </div>
             </div>
@@ -130,7 +128,7 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                   <a th:href ="@{/category/Bande-dessine}">Bande-dessiner</a>
+                    <a th:href ="@{/category/Bande-dessine}">Bande-dessiner</a>
                   </li>
                   <li>
                     <a th:href ="@{/category/roman}">Roman</a>
@@ -143,7 +141,7 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a th:href ="@{/category/Histoire}">Histoire</a>
+                   <a th:href ="@{/category/Histoire}">Histoire</a>
                   </li>
                   <li>
                     <a th:href ="@{/category/Science}">Science</a>
@@ -176,8 +174,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

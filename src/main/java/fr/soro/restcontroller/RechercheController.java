@@ -1,12 +1,9 @@
 package fr.soro.restcontroller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
-import org.springframework.ui.Model;
+import fr.soro.dto.Category;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +24,7 @@ public class RechercheController {
 	
 	private ExemplaireClient exemplaireClient;
 	private OuvrageClient ouvrageClient;
+	private Category categoryDto;
 	
 	public RechercheController(ExemplaireClient exemplaireService,OuvrageClient ouvrageClient) {
 		this.exemplaireClient=exemplaireService;
@@ -34,11 +32,27 @@ public class RechercheController {
 	}
 	
 	
+
+	@GetMapping("/category")
+	public ModelAndView getCategory(ModelAndView modelAndView){
+		modelAndView.setViewName("category");
+		return modelAndView;
+
+	}
+	@RequestMapping(value="/category/{categorie}", method = {RequestMethod.GET})
+	public ModelAndView getACategory(@PathVariable(value = "categorie")String categorie,ModelAndView modelAndView){
+		List<OuvrageDto> ouvragesByCategorie = ouvrageClient.getOuvrageByCategory(categorie);
+		modelAndView.addObject("ouvragesByCategorie", ouvragesByCategorie);
+
+		modelAndView.setViewName("resultat-category");
+		return modelAndView;
+	}
+
 	@GetMapping("/recherche")
-	public ModelAndView findOuvrage(ModelAndView modelAndView){			
+	public ModelAndView findOuvrage(ModelAndView modelAndView){
 		modelAndView.setViewName("recherche-initiale");
 		return modelAndView;
-	
+
 	}
 	
 	@RequestMapping(value="/search", method = {RequestMethod.GET})

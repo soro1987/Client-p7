@@ -15,7 +15,12 @@
 
   <!-- Custom styles for this template -->
   <link href="../css/modern-business.css" rel="stylesheet">
+  <style>
+    body {
+    background: radial-gradient(circle at bottom, #7efff5 0%, #ffcccc 100%);
 
+}
+  </style>
 </head>
 
 <body>
@@ -58,39 +63,61 @@
     </div>
     <!-- /.row -->
 
+ <!--   <th:block th:each="ouvrageSameCategory : ${ouvragesSameCategory}">
+      <div class="row">
+
+        <div class="col-md-3 col-sm-6 mb-4">
+
+          <a > <img class="img-fluid" th:src="@{/ouvrages/{id}/image(id=${ouvrageSameCategory.id})}"></a>
+
+        </div>
+
+
+
+      </div>
+    </th:block>-->
     <!-- Related Projects Row -->
     <h3 class="my-4">Ouvrage similaire</h3>
-
+    <!--<div th:text="${products[1].id}"></div>-->
     <div class="row">
-
+      <!--<th:block th:each="ouvrageSameCategory : ${ouvragesSameCategory}">-->
       <div class="col-md-3 col-sm-6 mb-4">
         <a href="#">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+          <div th:if="${ouvragesSameCategory.size() > 0}">
+          <img class="img-fluid" th:src="@{/ouvrages/{id}/image(id=${ouvragesSameCategory[0].id})}" alt="">
+          </div>
         </a>
       </div>
 
       <div class="col-md-3 col-sm-6 mb-4">
         <a href="#">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+          <div th:if="${ouvragesSameCategory.size() > 1}">
+          <img class="img-fluid" th:src="@{/ouvrages/{id}/image(id=${ouvragesSameCategory[1].id})}" alt="">
+          </div>
         </a>
       </div>
 
       <div class="col-md-3 col-sm-6 mb-4">
         <a href="#">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+          <div th:if="${ouvragesSameCategory.size() > 2}">
+          <img class="img-fluid" th:src="@{/ouvrages/{id}/image(id=${ouvragesSameCategory[2].id})}" alt="">
+      </div>
         </a>
       </div>
 
       <div class="col-md-3 col-sm-6 mb-4">
         <a href="#">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+          <div th:if="${ouvragesSameCategory.size() > 3}">
+          <img class="img-fluid" th:src="@{/ouvrages/{id}/image(id=${ouvragesSameCategory[3].id})}" alt="">
+      </div>
         </a>
       </div>
-
+     <!-- </th:block>-->
     </div>
     <!-- /.row -->
 
   </div>
+
   <!-- /.container -->
 
   <!-- Footer -->

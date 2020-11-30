@@ -1,92 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-	<title>Login </title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Connexion</title>
+
+	<!-- Font Icon -->
+	<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+	<!-- Main css -->
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	
-	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
-			<div class="wrap-login100">
-				<form th:action="@{/login}" th:object="${userForm}" method="POST">
-					<span class="login100-form-logo">
-						<i class="zmdi zmdi-landscape"></i>
-					</span>
 
-					<span class="login100-form-title p-b-34 p-t-27">
-						Connexion
-					</span>
+<div class="main">
 
-					 
-					<div class="wrap-input100 validate-input" data-validate = "Entrer votre username">
-						<input th:field="*{username}" class="input100" type="text" name="username" placeholder="Votre username">
-						<!-- span class="focus-input100" data-placeholder="&#xf207;" th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></span-->
-					</div>
+	<div class="container">
+		<form class="appointment-form" id="appointment-form" th:action="@{/login}" th:object="${userForm}" method="POST">
+			<h2>Connexion</h2>
+			<div class="form-group-1">
+				<input th:field="*{username}" type="text" name="title" id="title" placeholder="Nom d'utilisateur" required />
 
-					<div class="wrap-input100 validate-input" data-validate="Entrer votre mot de passe">
-						<input  th:field="*{password}" class="input100" type="password" name="password" placeholder="Votre password" >
-						<!-- span class="focus-input100" data-placeholder="&#xf191;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span-->
-					</div>
-
-<!-- 					<div class="contact100-form-checkbox"> -->
-<!-- 						<p class="loginhere text-light"> -->
-<!--                        Pas encore inscrit ? <br><a th:href="@{/register}" class="loginhere-link text-light">Créer un compte</a> -->
-<!--                     </p> -->
-<!-- 					</div> -->
-
-					<div class="container-login100-form-btn">
-						 <input type="submit" name="submit" id="submit" class="login100-form-btn" value="Sign up"/>
-					</div>
-
-					
-				</form>
+				<input th:field="*{password}" type="password" name="password" id="password" placeholder=" Mot de passe" required />
 			</div>
-		</div>
+
+			<div class="form-submit">
+				<input type="submit" name="submit" id="submit" class="submit" value="Valider" />
+			</div>
+			<br>
+			<label class="label-agree-term"><span><span></span></span>Pas encore inscrit ? <a th:href="@{/register}" class="term-service">Inscrivez vous par ici</a></label>
+			<br>
+			<a th:href="@{/accueil}" class="term-service">Retour Acceuil</a>
+		</form>
 	</div>
-	
 
-	<div id="dropDownSelect1"></div>
-	
-<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
+</div>
 
-</body>
+<!-- JS -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

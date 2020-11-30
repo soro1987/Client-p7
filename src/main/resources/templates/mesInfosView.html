@@ -1,68 +1,76 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<th:block th:insert="fragments/head::head"></th:block>
-<meta charset="UTF-8"/> 
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Modern Business - Start Bootstrap Template</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="../css/modern-business.css" rel="stylesheet">
+	<style>
+    body {
+    background: radial-gradient(circle at bottom, #7efff5 0%, #ffcccc 100%);
+
+}
+  </style>
 </head>
-<th:block th:insert="fragments/navbar::navbar"></th:block>
-<style>
-html {
-	background-size: 100%;
-	background-repeat: no-repeat;
-	height: 100%;
-}
 
-body {
-	background: linear-gradient(rgba(33, 33, 37, 0.6), rgba(33, 33, 37, 0.6)) 100%,
-		url('../images/place-reservation.jpg'); 
-	height: 100%;
-	
-}
-
-</style>
 <body>
-	<div class="container mt-5">
-		<div class="row">
-			<div class="col-12">
-				<div class="card border-secondary mb-3 text-center">
-					<div class="card-header card-secondary h1">
-						<i class="fa fa-user fa-lg"></i> <span th:text="${session.userSession.username}"></span>
-					</div>
-					<div class="card-text p-3">
-						<p>
-					
-						<div>
-							<span class="h4 text-secondary">Nom : </span><span class="h4"
-								th:text="${session.userSession.lastname}"></span>
-						</div>
-						<div>
-							<span class="h4 text-secondary">Prenom : </span><span class="h4"
-								th:text="${session.userSession.firstname}"></span>
-						</div>
-						<div>
-							<span class="h4 text-secondary">Telephone : </span><span class="h4"
-								th:text="${session.userSession.telephone}"></span>
-						</div>
-						<div>
-							<span class="h4 text-secondary">Email : </span><span class="h4"
-								th:text="${session.userSession.mail}"></span>
-						</div>
-						<div>
-							<span class="h4 text-secondary">Password : </span><span class="h4"
-								th:text="${session.userSession.password}"></span>
-						</div>
-						
-						<a th:if='${session.userSession != null}'
-					th:href="@{/editInfos}"
-					class="btn btn-info">Modifier</a>
-						
-						</p>
-					</div>
-				</div>				
-			</div>
+<!-- Navigation -->
+<th:block th:insert="fragments/navbar::navbar"></th:block>
+
+<!-- Page Content -->
+<div class="container">
+
+	<!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3" ></h1>
+
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a th:href="@{/accueil}">Accueil</a>
+		</li>
+		<li class="breadcrumb-item active"><a th:href="@{/recherche}">Rechercher</a></li>
+	</ol>
+	<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+		<div class="card-header">Infos perso</div>
+		<div class="card-body">
+			<h5 class="card-title" th:text="${session.userSession.username}">Info card title</h5>
+			<ul>
+				<li>Nom : <span th:text="${session.userSession.nom}"></span></li>
+				<li>Prernom : <span th:text="${session.userSession.prenom}"></span></li>
+				<li>Telephone : <span th:text="${session.userSession.telephone}"></span></li>
+				<li>Email : <span th:text="${session.userSession.email}"></span></li>
+			</ul>
 		</div>
+
+
+</div>
+<!-- /.row -->
+
+</div>
+
+<!-- /.container -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+	<div class="container">
+		<p class="m-0 text-center text-white">Copyright &copy; Bibliothèque-municipale 2020</p>
 	</div>
-	<th:block th:insert="fragments/footer::footer"></th:block>
+	<!-- /.container -->
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

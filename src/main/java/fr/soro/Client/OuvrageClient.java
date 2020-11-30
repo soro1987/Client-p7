@@ -46,6 +46,14 @@ public class OuvrageClient {
 		return ouvrageDto;
 		
 	}
+
+	public List<OuvrageDto> getOuvrageByCategory(String categorie){
+		ResponseEntity<OuvrageDto[]> response =restTemplate.getForEntity(appUrl+"/category/"+categorie, OuvrageDto[].class);
+		OuvrageDto[] ouvrage = response.getBody();
+		List<OuvrageDto> ouvrageDto = Arrays.asList(ouvrage);
+		return ouvrageDto;
+
+	}
 	
 	public List<OuvrageDto> getOuvrage(){		
 		ResponseEntity<OuvrageDto[]> response =securedRestTemplate.getForEntity(appUrl+"/ouvrages", OuvrageDto[].class);

@@ -33,6 +33,19 @@ public class OuvrageService {
 		return ouvragesWithImage;
 	}
 
+	public List<OuvrageDto> removeOuvrageFromList (List<OuvrageDto> initialeList,OuvrageDto ouvrageToRemove){
+		/*List<OuvrageDto> ouvrages = ouvrageClient.getOuvrage();
+		;*/
+		List<OuvrageDto> ouvragesWithoutDouble = new ArrayList<>();
+
+		for (int i = 0; i < initialeList.size(); i++) {
+			OuvrageDto ouvrage =initialeList.get(i);
+			if (!ouvrageToRemove.getId().equals(ouvrage.getId()))
+				ouvragesWithoutDouble.add(ouvrage);
+		}
+		return ouvragesWithoutDouble;
+	}
+
 
 	public byte[] downloadImage(@PathVariable Long id)
 	{
@@ -41,4 +54,7 @@ public class OuvrageService {
 				.orElseThrow(() -> new IllegalArgumentException("Ouvrage "+id+" not found"));
 		return downloadedImage.getBody();
 	}
+
+
+
 }

@@ -6,6 +6,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import fr.soro.Client.OuvrageClient;
+import fr.soro.dto.OuvrageDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -33,7 +36,9 @@ import fr.soro.dto.UserDto;
 
 @RestController
 public class ConnexionController {
-		
+	@Autowired
+	private OuvrageClient ouvrageClient;
+
 	private static final String ROLE_USER = "ROLE_USER";
 	@Value("${app.serveur.url}")
 	private String appUrl;
@@ -108,7 +113,13 @@ public class ConnexionController {
 		modelAndView.addObject("userForm", userDto);
 		return modelAndView;
 	}
-	
+
+	@GetMapping(value = "/infos") // initialisation du login
+	public ModelAndView infosUser(ModelAndView modelAndView) {
+		modelAndView.setViewName("mesInfosView");
+		UserDto userDto = new UserDto();
+		return modelAndView;
+	}
 	
 	@PostMapping(value = "/login") 
 	public ModelAndView loginPost(ModelAndView modelAndView,@ModelAttribute("userForm")UserDto userForm,HttpSession session) throws JsonProcessingException {
@@ -131,7 +142,8 @@ public class ConnexionController {
 		UserDto userConfirmed = this.userClient.getuserByUsername(username);
 		session.setAttribute("tokenSession", token);
 		session.setAttribute("userSession", userConfirmed);// On crée une variable de session a l aide de l objet
-		
+		List<OuvrageDto> ouvrages = ouvrageClient.getOuvrage();
+		modelAndView.addObject("ouvrages", ouvrages);
 		modelAndView.setViewName("accueil");
 		return modelAndView;
 		} else 
@@ -148,6 +160,8 @@ public class ConnexionController {
 			ModelAndView model = new ModelAndView();
 			session.setAttribute("userSession", null);// Reatribue null a l userSession pr logout
 			session.setAttribute("tokenSession", null);
+			List<OuvrageDto> ouvrages = ouvrageClient.getOuvrage();
+			model.addObject("ouvrages", ouvrages);
 			model.setViewName("/accueil");
 			return model;
 		}

@@ -44,8 +44,11 @@ public class OuvrageController {
 	}
 	
 	@GetMapping("/ouvrages/{id}")
-	public ModelAndView ouvrage (@PathVariable(value = "id") Long id,ModelAndView modelAndView){		
+	public ModelAndView ouvrage (@PathVariable(value = "id") Long id,ModelAndView modelAndView){
 		OuvrageDto ouvrage = ouvrageClient.getOuvrageById(id);
+		List<OuvrageDto> ouvragesSameCategory = ouvrageClient.getOuvrageByCategory(ouvrage.getCategorie());
+		List<OuvrageDto> ouvragesSameCategoryWithoutOuvrage =ouvrageService.removeOuvrageFromList(ouvragesSameCategory,ouvrage);
+		modelAndView.addObject("ouvragesSameCategory", ouvragesSameCategoryWithoutOuvrage);
 		modelAndView.addObject("ouvrage", ouvrage);
 		modelAndView.setViewName("ouvrage-id");
 		return modelAndView;
@@ -64,7 +67,7 @@ public class OuvrageController {
 	}
 
 
-	/*@GetMapping(value = "/ouvrages/{id}/image")*/
+	@GetMapping(value = "/ouvrages/{id}/image")
 	public ResponseEntity<byte[]> downloadImage(@PathVariable Long id)
 	{
 		return ouvrageClient.downloadImage(id)
